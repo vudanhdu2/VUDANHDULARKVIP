@@ -25,9 +25,9 @@ classifiers = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/<YOUR-GH-USERNAME>/VUDANHDULARKVIP"
-Repository = "https://github.com/<YOUR-GH-USERNAME>/VUDANHDULARKVIP"
-Issues = "https://github.com/<YOUR-GH-USERNAME>/VUDANHDULARKVIP/issues"
+Homepage = "https://github.com/vudanhdu2/VUDANHDULARKVIP"
+Repository = "https://github.com/vudanhdu2/VUDANHDULARKVIP"
+Issues = "https://github.com/vudanhdu2/VUDANHDULARKVIP/issues"
 
 [project.scripts]
 waytoagi = "waytoagi.cli:main"
