@@ -53,7 +53,7 @@ class TestUrlMapper:
 
     def test_different_domain_no_replace(self, mapper: UrlMapper) -> None:
         url = "https://example.com/wiki/CNtokenA1234"
-        new, replaced = mapper.replace(url)
+        _new, replaced = mapper.replace(url)
         assert replaced is False
 
     def test_idempotent_already_dst(self, mapper: UrlMapper) -> None:

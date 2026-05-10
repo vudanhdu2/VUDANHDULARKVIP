@@ -7,13 +7,15 @@ Build từ Lark Base records: mỗi BaseRecord có (Node Token, Mirror Wiki Node
 from __future__ import annotations
 
 import re
-from collections.abc import Iterable
-from typing import Any
+from typing import TYPE_CHECKING, Any
 from urllib.parse import unquote
 
 from pydantic import BaseModel, ConfigDict, Field, PrivateAttr
 
-from waytoagi.models.base import BaseRecord
+if TYPE_CHECKING:
+    from collections.abc import Iterable
+
+    from waytoagi.models.base import BaseRecord
 
 
 class UrlMapper(BaseModel):
@@ -45,7 +47,7 @@ class UrlMapper(BaseModel):
 
     _src_pattern: re.Pattern[str] = PrivateAttr()
 
-    def model_post_init(self, __context: Any) -> None:  # noqa: ANN401
+    def model_post_init(self, __context: Any) -> None:
         """Build regex pattern cho source URL — sau khi domain được set."""
         # Match cả wiki/docx/base/sheets paths
         self._src_pattern = re.compile(

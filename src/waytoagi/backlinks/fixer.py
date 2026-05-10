@@ -7,8 +7,11 @@
 
 from __future__ import annotations
 
-from waytoagi.backlinks.mapper import UrlMapper
-from waytoagi.models.docs import Element
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from waytoagi.backlinks.mapper import UrlMapper
+    from waytoagi.models.docs import Element
 
 
 def fix_elements(

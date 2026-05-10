@@ -10,7 +10,7 @@ Public API:
     fix_elements    — replace URLs trong list[Element] (text_run + mention_doc)
 """
 
-from waytoagi.backlinks.mapper import UrlMapper, replace_url
 from waytoagi.backlinks.fixer import fix_elements
+from waytoagi.backlinks.mapper import UrlMapper, replace_url
 
 __all__ = ["UrlMapper", "fix_elements", "replace_url"]

@@ -6,13 +6,6 @@ from waytoagi.models.base import (
     RecordStatus,
     TranslateStatus,
 )
-from waytoagi.models.docs import (
-    Block,
-    BlockType,
-    Image,
-    MentionDoc,
-    TextRun,
-)
 from waytoagi.models.crawl import (
     CrawlEvent,
     CrawlPlan,
@@ -20,6 +13,13 @@ from waytoagi.models.crawl import (
     CrawlResult,
     PlaceholderCreateResult,
     PlaceholderStatus,
+)
+from waytoagi.models.docs import (
+    Block,
+    BlockType,
+    Image,
+    MentionDoc,
+    TextRun,
 )
 from waytoagi.models.pipeline import (
     AuditEntry,
