@@ -1,0 +1,90 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master, develop, dev]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  lint:
+    name: Lint (ruff)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
+      - name: Install dependencies
+        run: |
+          pip install -e ".[dev]"
+      - name: Ruff check
+        run: ruff check src/ tests/
+
+  type-check:
+    name: Type check (mypy strict)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
+      - name: Install dependencies
+        run: |
+          pip install -e ".[dev]"
+      - name: Mypy strict
+        run: mypy src/
+
+  test:
+    name: Test (pytest + coverage ≥ 70%)
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: ["3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+          cache: pip
+      - name: Install dependencies
+        run: |
+          pip install -e ".[dev]"
+      - name: Run pytest
+        run: pytest tests/unit/ -v --cov-report=xml --cov-report=term
+      - name: Upload coverage HTML artifact
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: coverage-html-${{ matrix.python }}
+          path: htmlcov/
+          retention-days: 7
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v4
+        if: matrix.python == '3.13'
+        continue-on-error: true
+        with:
+          files: ./coverage.xml
+
+  smoke:
+    name: Smoke test (CLI imports + --help)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
+      - name: Install (runtime only)
+        run: |
+          pip install -e .
+      - name: Verify CLI startup
+        run: |
+          python -m waytoagi.cli --version
+          python -m waytoagi.cli --help
+          python -m waytoagi.cli preflight --help
+          python -m waytoagi.cli orchestrate --help
+          python -m waytoagi.cli crawl --help
+          python -m waytoagi.cli pipeline --help

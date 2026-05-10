@@ -1,0 +1,59 @@
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual envs
+venv/
+.venv/
+env/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+
+# Build
+build/
+dist/
+*.egg-info/
+*.egg
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# Project-specific
+.env
+.env.*
+!.env.example
+.cache/
+logs/
+.tmp-media/
+.tmp-batch/
+.tmp-overwrite/
+*.bak.*
+state/*.json.tmp
+llm_keys.json
+llm_keys.*.json
+!llm_keys.example.json
+
+# Secrets — never commit
+*.pem
+*.key
+secrets/
+credentials/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor backup
+*~
+*.orig
+*.rej
