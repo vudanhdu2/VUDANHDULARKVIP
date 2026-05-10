@@ -24,13 +24,6 @@ classifiers = [
     "Topic :: Software Development :: Localization",
 ]
 
-[project.urls]
-Homepage = "https://github.com/vudanhdu2/VUDANHDULARKVIP"
-Repository = "https://github.com/vudanhdu2/VUDANHDULARKVIP"
-Issues = "https://github.com/vudanhdu2/VUDANHDULARKVIP/issues"
-
-[project.scripts]
-waytoagi = "waytoagi.cli:main"
 dependencies = [
     "pydantic>=2.5",
     "pydantic-settings>=2.1",
@@ -58,7 +51,9 @@ dev = [
 waytoagi = "waytoagi.cli:main"
 
 [project.urls]
-Repository = "https://github.com/vudanhdu/vddclonelark-v2"
+Homepage = "https://github.com/vudanhdu2/VUDANHDULARKVIP"
+Repository = "https://github.com/vudanhdu2/VUDANHDULARKVIP"
+Issues = "https://github.com/vudanhdu2/VUDANHDULARKVIP/issues"
 
 # ============================================================
 # Tool config
